@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA Solutions</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .buttons {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            z-index: 1000;
+        }
+        .button {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 1rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border: 1px solid #ffffff;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 2rem;
+            box-sizing: border-box;
+            flex-grow: 1;
+        }
+        .logo-container {
+            position: relative;
+            margin-bottom: 6rem;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+            font-size: 8rem;
+            margin: 0;
+            position: relative;
+            z-index: 2;
+            mix-blend-mode: difference;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+            font-size: 5rem;
+            }
+        }
+        h2 {
+            font-size: 2rem;
+            font-weight: 300;
+            margin-top: 1rem;
+            opacity: 0.8;
+        }
+        h3 {
+            font-size: 2.5rem;
+            margin: 3rem 0 2rem;
+            text-align: center;
+        }
+        .glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 0, 0, 0.4) 0%, rgba(255, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0) 70%);
+            filter: blur(30px);
+            z-index: 1;
+            animation: pulse 4s infinite alternate;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.9); }
+            100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.1); }
+        }
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 6rem;
+            flex-wrap: wrap;
+        }
+        .card {
+            background-color: #000000;
+            border: 2px solid #ffffff;
+            border-radius: 15px;
+            padding: 2rem;
+            width: 300px;
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        .card h3 {
+            margin-top: 0;
+            font-size: 1.8rem;
+        }
+
+        .reviews-container {
+            width: 100%;
+            max-width: 1400px;
+            overflow: hidden;
+            margin-bottom: 6rem;
+            position: relative;
+        }
+        .reviews-container::before,
+        .reviews-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100px;
+            z-index: 2;
+        }
+        .reviews-container::before {
+            left: 0;
+            background: linear-gradient(to right, #000000, transparent);
+        }
+        .reviews-container::after {
+            right: 0;
+            background: linear-gradient(to left, #000000, transparent);
+        }
+        .reviews {
+            display: flex;
+            gap: 2rem;
+            animation: scroll 30s linear infinite;
+        }
+        .review {
+            flex: 0 0 auto;
+            background-color: #000000;
+            border: 2px solid #ffffff;
+            border-radius: 15px;
+            padding: 1.5rem;
+            width: 300px;
+            transition: all 0.3s ease;
+        }
+        .review:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-300px * 6 - 10rem)); }
+        }
+        .feature-container {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 6rem;
+            flex-wrap: wrap;
+        }
+        .feature-card {
+            background-color: #000000;
+            border: 2px solid #ffffff;
+            border-radius: 15px;
+            padding: 2rem;
+            width: 300px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .feature-card:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        .feature-card h3 {
+            margin-top: 0;
+            font-size: 1.8rem;
+        }
+        .feature-list {
+            text-align: left;
+            margin-top: 1.5rem;
+        }
+        .feature-list li {
+            margin: 0.8rem 0;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: auto;
+        }
+
+        .cta-button {
+            --glow-color: rgba(255, 0, 0, 0.692);
+            --glow-spread-color: rgba(216, 20, 20, 0.781);
+            --enhanced-glow-color: rgb(255, 0, 0);
+            --btn-color: rgba(150, 0, 0, 0.459);
+            border: .25em solid var(--glow-color);
+            padding: 1em 3em;
+            color: var(--glow-color);
+            font-size: 15px;
+            font-weight: bold;
+            background-color: var(--btn-color);
+            border-radius: 1em;
+            outline: none;
+            box-shadow: 0 0 1em .25em var(--glow-color),
+            0 0 4em 1em var(--glow-spread-color),
+            inset 0 0 .75em .25em var(--glow-color);
+            text-shadow: 0 0 .5em var(--glow-color);
+            position: relative;
+            transition: all 0.3s;
+            z-index: 1001; /* Ensure the button is on top of other elements */
+        }
+
+        .cta-button::after {
+            pointer-events: none;
+            content: "";
+            position: absolute;
+            top: 120%;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: var(--glow-spread-color);
+            filter: blur(2em);
+            opacity: .7;
+            transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
+        }
+
+        .cta-button:hover {
+            color: var(--btn-color);
+            background-color: var(--glow-color);
+            box-shadow: 0 0 1em .25em var(--glow-color),
+            0 0 4em 2em var(--glow-spread-color),
+            inset 0 0 .75em .25em var(--glow-color);
+        }
+
+        .cta-button:active {
+            box-shadow: 0 0 0.6em .25em var(--glow-color),
+            0 0 2.5em 2em var(--glow-spread-color),
+            inset 0 0 .5em .25em var(--glow-color);
+        }
+
+        .reviews-container {
+            width: 100%;
+            max-width: 1400px;
+            overflow: hidden;
+            margin-bottom: 6rem;
+            position: relative;
+        }
+        .reviews {
+            display: flex;
+            gap: 2rem;
+        }
+
+        
+        
+        
+
+
+    </style>
+</head>
+<body>
+    <div class="buttons">
+        <a href="https://example.com" class="button">Discord</a>
+        <a href="https://example.com" class="button">Get Aura</a>
+    </div>
+    <main>
+        <div class="logo-container">
+            <div class="glow"></div>
+            <h1>Λ ⋃ R Λ</h1>
+            <h2>by <strong>Solutions</strong></h2>
+        </div>
+
+        <h3>Why Use AURA?</h3>
+        <div class="cards-container">
+            <div class="card">
+                <h3>Security</h3>
+                <p>AURA provides a robust anti-cheat bypass mechanism that ensures your safety and prevents detection or bans. It is regularly updated and thoroughly tested to guarantee your security.</p>
+            </div>
+            <div class="card">
+                <h3>Compatibility</h3>
+                <p>AURA is designed to work with every executor and platform, including Windows, Android, iOS, and macOS. It seamlessly integrates with a wide range of exploit software, ensuring maximum compatibility and flexibility for users.</p>
+            </div>
+            <div class="card">
+                <h3>Performance</h3>
+                <p>AURA is designed to have minimal impact on your game performance, ensuring a smooth and seamless experience. It is optimized to provide efficient and reliable execution of its features without causing any lag or slowdown.</p>
+            </div>
+        </div>
+
+        <h3>What Users Say</h3>
+        <div class="reviews-container">
+            <div class="reviews">
+                <!-- Review items will be inserted here by JavaScript -->
+            </div>
+        </div>
+
+        <h3>Our Features</h3>
+        <div class="feature-container">
+            <div class="feature-card">
+                <h3>Player</h3>
+                <ul class="feature-list">
+                    <li>Speed Fast</li>
+                    <li>Fast pick Up</li>
+                    <li>Ain't Lava</li>
+                    <li>Ain't Fire Ball</li>
+                    <li>Inf Stamina</li>
+                    <li>Anti-Fall</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h3>Combat</h3>
+                <ul class="feature-list">
+                    <li>Killaura</li>
+                    <li>Aint hit</li>
+                    <li>Aim bot</li>
+                    <li>Auto cliker</li>
+                    <li>Aim assit</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h3>Auto farm</h3>
+                <ul class="feature-list">
+                    <li>Auto farm gold</li>
+                    <li>Auto farm ores</li>
+                    <li>Auto farm trees</li>
+                    <li>Auto farm tetain</li>
+                    <li>Auto farm kakren</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h3>MICS</h3>
+                <ul class="feature-list">
+                    <li>No boss Damage</li>
+                    <li>Ainmal aura</li>
+                    <li>Teleport</li>
+                    <li>Bot speed</li>
+                    <li>chiken spin</li>
+                </ul>
+            </div>
+        </div>
+        <div class="buttonss">
+            <a href="#" class="button">Get Aura</a>
+            <a href="#" class="button">Discord</a>
+        </div>
+
+    
+        <footer>
+            <p>&copy; 2024 AURA Solutions. All rights reserved.</p>
+        </footer>
+
+    <script>
+        const reviewItems = [
+            {
+                author: "dumm_dogg",
+                content: "This solution is just awesome"
+            },
+            {
+                author: "xint523",
+                content: "AURA solutions is just amazing, especially the developer"
+            },
+            {
+                author: "AURA",
+                content: "This is one of the best solutions I've ever seen"
+            },
+            {
+                author: "online_gamer123",
+                content: "AURA's features are incredibly innovative"
+            },
+            {
+                author: "gaming_queen",
+                content: "Player combat and utility features are spot on"
+            },
+            {
+                author: "pro_gamer99",
+                content: "The anti-fall feature saved me countless times"
+            },
+            {
+                author: "elite_gamer",
+                content: "AURA has greatly improved my gaming experience"
+            },
+            {
+                author: "gamer_girl123",
+                content: "The compatibility with different platforms is impressive"
+            },
+            {
+                author: "master_gamer",
+                content: "The security measures are top-notch"
+            },
+            {
+                author: "game_changer",
+                content: "AURA's performance is unmatched"
+            },
+            {
+                author: "speed_demon",
+                content: "The auto farm feature is a game-changer"
+            },
+            {
+                author: "aura_lover",
+                content: "The auras add an exciting element to gameplay"
+            },
+            {
+                author: "utility_master",
+                content: "The utility features make playing so much easier"
+            },
+            {
+                author: "gaming_enthusiast",
+                content: "AURA is a must-have for any serious gamer"
+            },
+            {
+                author: "pro_speedrunner",
+                content: "The speed boost feature is incredible"
+            },
+            {
+                author: "healing_hero",
+                content: "The healing aura has saved me in tough battles"
+            },
+            {
+                author: "sleek_designer",
+                content: "AURA's design is sleek and user-friendly"
+            },
+            {
+                author: "explorer_gamer",
+                content: "The teleport feature is a game-changer for exploration"
+            },
+            {
+                author: "cheat_bypass",
+                content: "AURA's anti-cheat bypass is impressive"
+            },
+            {
+                author: "gear_expert",
+                content: "The auto-equip feature is so convenient"
+            }
+        ];
+
+        function createReviewItem(item) {
+            return `
+            <div class="review">
+                <div class="review-header">
+                <div class="review-avatar"></div>
+                <span class="review-author" style="font-weight: bold; font-size: 1.2rem;">${item.author}</span>
+                </div>
+                <p class="review-content">${item.content}</p>
+            </div>
+            `;
+        }
+
+        function populateReviews() {
+            const reviews = document.querySelector('.reviews');
+            const items = reviewItems.map(createReviewItem).join('');
+            reviews.innerHTML = items + items + items; // Triplicate items for seamless loop
+        }
+
+        document.addEventListener('DOMContentLoaded', populateReviews);
+
+    </script>
+</body>
+</html>

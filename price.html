@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA Solutions - Pricing</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .buttons {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            z-index: 1000;
+        }
+        .button {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 1rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border: 1px solid #ffffff;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        .logo {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            font-size: 2rem;
+            font-weight: normal;
+            z-index: 1000;
+        }
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            box-sizing: border-box;
+            flex-grow: 1;
+        }
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            font-weight: normal;
+        }
+        .pricing-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        .pricing-card {
+            background-color: #000000;
+            border: 2px solid #ffffff;
+            border-radius: 15px;
+            padding: 2rem;
+            width: 300px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .pricing-card:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        .pricing-card h2 {
+            font-size: 2rem;
+            margin-top: 0;
+            font-weight: normal;
+        }
+        .price {
+            font-size: 3rem;
+            margin: 1rem 0;
+        }
+        .feature-list {
+            text-align: left;
+            margin-top: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        .feature-list li {
+            margin: 0.8rem 0;
+        }
+        .cta-button {
+            display: inline-block;
+            margin-top: 1.5rem;
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border: 1px solid #ffffff;
+            border-radius: 5px;
+        }
+        .cta-button:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: auto;
+        }
+        .pricing-card-link {
+        text-decoration: none;
+        color: inherit;
+    }
+    .pricing-card-link .pricing-card {
+        transition: transform 0.2s;
+    }
+    .pricing-card-link:hover .pricing-card {
+        transform: scale(1.05);
+    }
+    </style>
+</head>
+<body>
+    <div class="logo">Λ ⋃ R Λ</div>
+    <div class="buttons">
+        <a href="#" class="button">Home</a>
+        <a href="#" class="button">Discord</a>
+    </div>
+    <main>
+        <h1>Choose Your Plan</h1>
+        <div class="pricing-container">
+            <a href="https://example.com/free" class="pricing-card-link">
+                <div class="pricing-card">
+                    <h2>Free</h2>
+                    <div class="price">$0</div>
+                    <ul class="feature-list">
+                        <li>Anti-cheat bypass</li>
+                        <li>Basic features</li>
+                        <li>Ads included</li>
+                        <li>Slow updates</li>
+                    </ul>
+                </div>
+            </a>
+            <a href="https://example.com/old-user" class="pricing-card-link">
+                <div class="pricing-card">
+                    <h2>Old User</h2>
+                    <div class="price">$4.5</div>
+                    <ul class="feature-list">
+                        <li>Premium features</li>
+                        <li>Anti-cheat bypass</li>
+                        <li>Bot access</li>
+                        <li>For Kya-ware buyers only</li>
+                    </ul>
+                </div>
+            </a>
+            <a href="https://example.com/premium" class="pricing-card-link">
+                <div class="pricing-card">
+                    <h2>Premium</h2>
+                    <div class="price">$8</div>
+                    <ul class="feature-list">
+                        <li>Premium features</li>
+                        <li>Anti-cheat bypass</li>
+                        <li>Bot access</li>
+                        <li> updates</li>
+                    </ul>
+                </div>
+            </a>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 AURA Solutions. All rights reserved.</p>
+    </footer>
+</body>
+</html>
